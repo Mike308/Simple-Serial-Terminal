@@ -3,22 +3,92 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 
 Item {
-    property alias textField1: textField1
-    property alias button1: button1
 
-    RowLayout {
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.topMargin: 20
-        anchors.top: parent.top
+
+    Row {
+
+        spacing: 40
+
+    Column {
+
+        y: 40
+
+
+        TextArea {
+
+            id: receiveData
+            text: "Waiting..."
+            width: 500
+            height: 100
+
+
+
+        }
 
         TextField {
-            id: textField1
-            placeholderText: qsTr("Text Field")
+
+            id: dataToSend
+            text: "Data to send..."
+            width: 500
+
         }
 
         Button {
-            id: button1
-            text: qsTr("Press Me")
+
+            id: sendBtn
+            text: qsTr("Send")
+            anchors.top: connectBtn.anchors.top
+
         }
+
+
+
+
     }
+
+    Column {
+
+        y: 40
+
+        Label{
+
+            text: qsTr("Serial port: ")
+        }
+
+        ComboBox {
+
+            id: serialPorts
+            width: 50
+
+        }
+
+        Label {
+
+            text: qsTr("Baud: ")
+        }
+
+        ComboBox {
+
+            id: baudRate
+            width: 50
+
+        }
+
+        Button {
+
+            id: connectBtn
+            text: qsTr("Connect")
+
+        }
+
+
+
+
+    }
+
+
+
+    }
+
+
 }
