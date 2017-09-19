@@ -18,6 +18,7 @@ public slots:
 
     void openSerialPortSlot(QString comName, int baud);
     void writeToSerialPortSlot(QString message);
+    void readFromSerialPort();
 
 
 
@@ -25,6 +26,11 @@ private:
 
     QSerialPort *serialPort;
     QSerialPortInfo *serialPortInfo;
+
+
+signals:
+
+    QString getData(QString data);
 
 
 
