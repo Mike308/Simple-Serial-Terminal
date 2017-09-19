@@ -4,87 +4,128 @@ import QtQuick.Layouts 1.0
 
 Item {
 
+    property alias sendBtn: sendBtn
+    property alias terminal: terminal
+    property alias dataToSend: dataToSend
+    property alias connectBtn: connectBtn
+
 
     Row {
 
         spacing: 40
 
-    Column {
+        Column {
 
-        y: 40
+            y: 40
 
 
-        TextArea {
+            Flickable {
 
-            id: receiveData
-            text: "Waiting..."
-            width: 500
-            height: 100
+                clip: true
+
+                width: 500
+                height: 100
+
+
+
+
+            TextArea.flickable: TextArea {
+
+                id: terminal
+                wrapMode: TextArea.Wrap
+
+                placeholderText:  "Waiting..."
+                width: 500
+                height: 100
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            TextField {
+
+                id: dataToSend
+                placeholderText:  "Data to send..."
+                width: 500
+
+            }
+
+            Button {
+
+                id: sendBtn
+                text: qsTr("Send")
+                anchors.top: connectBtn.anchors.top
+
+            }
+
 
 
 
         }
 
-        TextField {
+        Column {
 
-            id: dataToSend
-            text: "Data to send..."
-            width: 500
+            y: 40
+
+            Label{
+
+                text: qsTr("Serial port: ")
+            }
+
+            ComboBox {
+
+                id: serialPorts
+                width: 50
+
+            }
+
+            Label {
+
+                text: qsTr("Baud: ")
+            }
+
+            ComboBox {
+
+                id: baudRate
+                width: 50
+
+            }
+
+            Button {
+
+                id: connectBtn
+                text: qsTr("Connect")
+
+            }
+
+
+
 
         }
-
-        Button {
-
-            id: sendBtn
-            text: qsTr("Send")
-            anchors.top: connectBtn.anchors.top
-
-        }
-
-
-
-
-    }
-
-    Column {
-
-        y: 40
-
-        Label{
-
-            text: qsTr("Serial port: ")
-        }
-
-        ComboBox {
-
-            id: serialPorts
-            width: 50
-
-        }
-
-        Label {
-
-            text: qsTr("Baud: ")
-        }
-
-        ComboBox {
-
-            id: baudRate
-            width: 50
-
-        }
-
-        Button {
-
-            id: connectBtn
-            text: qsTr("Connect")
-
-        }
-
-
-
-
-    }
 
 
 
