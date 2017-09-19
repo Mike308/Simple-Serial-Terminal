@@ -15,6 +15,8 @@ void SerialTerminal::openSerialPort(QString comName, int baud){
     serialPort->setDataBits(QSerialPort::Data8);
     serialPort->setStopBits(QSerialPort::OneStop);
     serialPort->open(QIODevice::ReadWrite);
+    connect(serialPort,SIGNAL(readyRead()),this,SLOT(readFromSerialPort()));
+
 
 
 
@@ -35,5 +37,17 @@ void SerialTerminal::writeToSerialPortSlot(QString message){
 
     this->writeToSerialPort(message);
 }
+
+void SerialTerminal::readFromSerialPort(){
+
+    if (serialPort->canReadLine()){
+
+        QString data = QString::fromLatin1(serialPort->readAll());
+        emit getData(data);
+    }
+
+}
+
+
 
 
