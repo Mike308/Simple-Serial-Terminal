@@ -23,14 +23,9 @@ ApplicationWindow {
         }
 
 
-    }
 
-    footer: TabBar {
-        id: tabBar
-        currentIndex: swipeView.currentIndex
-        TabButton {
-            text: qsTr("Terminal")
-        }
 
-    }
+
+
+
 }
