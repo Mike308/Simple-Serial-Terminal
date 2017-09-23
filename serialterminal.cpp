@@ -22,6 +22,20 @@ void SerialTerminal::openSerialPort(QString comName, int baud){
 
 }
 
+void SerialTerminal::closeSerialPort(){
+
+    serialPort->close();
+
+}
+
+bool SerialTerminal::getConnectionStatus(){
+
+    return serialPort->isOpen();
+
+}
+
+
+
 void SerialTerminal::writeToSerialPort(QString message){
 
     const QByteArray &messageArray = message.toLocal8Bit();
@@ -38,6 +52,16 @@ void SerialTerminal::writeToSerialPortSlot(QString message){
     this->writeToSerialPort(message);
 }
 
+void SerialTerminal::closeSerialPortSlot(){
+
+    this->closeSerialPort();
+}
+
+bool SerialTerminal::getConnectionStatusSlot(){
+
+    return this->getConnectionStatus();
+}
+
 void SerialTerminal::readFromSerialPort(){
 
     if (serialPort->canReadLine()){
@@ -47,6 +71,8 @@ void SerialTerminal::readFromSerialPort(){
     }
 
 }
+
+
 
 
 
