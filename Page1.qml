@@ -22,7 +22,14 @@ Page1Form {
 
     connectBtn.onClicked: {
 
-        serialTerminal.openSerialPortSlot("COM16",9600)
+        if (serialTerminal.getConnectionStatusSlot() === false){
+            serialTerminal.openSerialPortSlot(serialPorts.currentText,serialPorts.currentText)
+            connectBtn.text = "Disconnect"
+        }else {
+
+            serialTerminal.closeSerialPortSlot();
+            connectBtn.text = "Connect"
+        }
 
     }
 
