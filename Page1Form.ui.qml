@@ -99,7 +99,8 @@ Item {
             ComboBox {
 
                 id: serialPorts
-                width: 50
+                width: 100
+                model: portsNameModel
 
             }
 
@@ -111,7 +112,8 @@ Item {
             ComboBox {
 
                 id: baudRate
-                width: 50
+                width: 100
+                model: baudsModel
 
             }
 
