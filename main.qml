@@ -4,16 +4,18 @@ import QtQuick.Layouts 1.0
 
 ApplicationWindow {
     visible: true
-    width: 640
+    width: 720
     height: 480
+    maximumHeight: 480
+    maximumWidth: 720
+    minimumWidth: 720
+    minimumHeight: 480
+
     title: qsTr("Serial Terminal")
 
 
 
-    SwipeView {
-        id: swipeView
-        anchors.fill: parent
-        currentIndex: tabBar.currentIndex
+
 
         Page1 {
 
